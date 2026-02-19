@@ -5,18 +5,19 @@ import "./Quiz.css";
 import { data } from "../../assets/data";
 
 const Quiz = () => {
-  let [index, setIndex] = useState(0);
-  let [question, setQuestion] = useState(data[index]);
-  let [lock, setLock] = useState(false);
-  let [score, setScore] = useState(0);
-  let [result, setResult] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [lock, setLock] = useState(false);
+  const [score, setScore] = useState(0);
+  const [result, setResult] = useState(false);
 
-  let Option1 = useRef(null);
-  let Option2 = useRef(null);
-  let Option3 = useRef(null);
-  let Option4 = useRef(null);
+  const question = data[index]; // Derive question from index
 
-  let option_array = [Option1, Option2, Option3, Option4];
+  const Option1 = useRef(null);
+  const Option2 = useRef(null);
+  const Option3 = useRef(null);
+  const Option4 = useRef(null);
+
+  const option_array = [Option1, Option2, Option3, Option4];
 
   const checkAns = (e, ans) => {
     if (lock === false) {
@@ -36,25 +37,25 @@ const Quiz = () => {
     if (lock === true) {
       if (index === data.length - 1) {
         setResult(true);
-        return 0;
+        return;
       }
-      setIndex(++index);
-      setQuestion(data[index]);
+      setIndex((prev) => prev + 1);
       setLock(false);
-      option_array.map((option) => {
-        option.current.classList.remove("wrong");
-        option.current.classList.remove("correct");
-        return null;
+      option_array.forEach((option) => {
+        if (option.current) {
+          option.current.classList.remove("wrong");
+          option.current.classList.remove("correct");
+        }
       });
     }
   };
 
   const reset = () => {
     setIndex(0);
-    setQuestion(data[0]);
     setScore(0);
     setLock(false);
     setResult(false);
+    // Don't need to setQuestion because it's derived
   };
 
   return (
@@ -62,12 +63,15 @@ const Quiz = () => {
       <h1>Quiz App</h1>
       <hr />
       {result ? (
-        <>
+        <div className="result-container">
           <h2 className="score-text">
             You Scored {score} out of {data.length}
           </h2>
-          <button onClick={reset}>Reset</button>
-        </>
+          <div className="score-percentage">
+            {Math.round((score / data.length) * 100)}% Accuracy
+          </div>
+          <button onClick={reset}>Try Again</button>
+        </div>
       ) : (
         <div key={index} className="question-fade">
           <h2>
@@ -87,9 +91,21 @@ const Quiz = () => {
               {question.option4}
             </li>
           </ul>
-          <button onClick={next}>Next</button>
+          {lock && (
+            <div className="explanation">
+              <b>Explanation:</b>
+              {question.explanation}
+            </div>
+          )}
+          <button
+            onClick={next}
+            className={!lock ? "button-disabled" : ""}
+            disabled={!lock}
+          >
+            Next Question
+          </button>
           <div className="index">
-            {index + 1} of {data.length} questions
+            Question {index + 1} of {data.length}
           </div>
         </div>
       )}
