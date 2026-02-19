@@ -1,37 +1,37 @@
 #  Quiz App (React)
 
-A premium, interactive quiz platform designed to provide a seamless learning and testing experience.
-
+A premium, interactive quiz platform designed to provide a seamless learning and testing experience with a focus on Computer Science fundamentals.
 
 ##  Features
 
-- **Interactive Quiz Interface**: Clean and intuitive layout for answering multiple-choice questions.
+- **25+ Comprehensive Questions**: Curated library covering Hardware, Networking, Web Dev, Algorithms, and Data Structures.
+- **Detailed Explanations**: Every question includes a deep-dive explanation that appears after answering, turning every test into a learning opportunity.
+- **Interactive Quiz Interface**: Clean and intuitive layout for answering multiple-choice questions with smooth transitions.
 - **Instant Validation**: Real-time feedback on your answers (Green for Correct, Red for Incorrect).
 - **Auto-Highlight**: Automatically shows the correct answer if you pick the wrong one.
 - **Final Scoring**: Comprehensive result screen showing your total score out of the available questions.
-- **State Persistence**: Handles quiz flow efficiently using React Hooks (`useState`, `useRef`).
-- **Responsive Design**: Optimized for desktops, tablets, and mobile devices.
-- **Glassmorphism UI**: Uses modern CSS filters and gradients for a high-end feel.
+- **Glassmorphism UI**: High-end design using modern CSS filters, gradients, and micro-animations.
+- **Responsive Design**: Fully optimized for desktops, tablets, and mobile devices.
 
 ##  Tech Stack
 
 - **Frontend**: [React.js](https://reactjs.org/) (v19)
 - **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: Vanilla CSS3 (Custom Variables, Flexbox, Animations)
-- **Icons/Fonts**: Google Fonts (Poppins)
+- **Styling**: Vanilla CSS3 (Custom Design Tokens, Flexbox, Keyframe Animations)
+- **Fonts**: Google Fonts (Poppins / Inter)
 
 ##  Project Structure
 
 ```text
 src/
  ├── assets/             # Data files
- │    └── data.js       # Quiz questions library
+ │    └── data.js       # Quiz questions library (25+ items with explanations)
  ├── Components/
  │    └── Quiz/         # Logic and Styling for the Quiz
- │         ├── Quiz.jsx
- │         └── Quiz.css
- ├── App.jsx            # Main entry component
- └── index.css          # Global styles & Design Tokens
+ │         ├── Quiz.jsx # Core logic for selection, scoring, and explanation display
+ │         └── Quiz.css # Premium styling and animations
+ ├── App.jsx            # Main app container
+ └── index.css          # Global styles, variables, and typography
 ```
 
 ##  Installation & Setup
@@ -53,11 +53,11 @@ src/
 
 ##  How to Use
 
-1. **Start**: Answer the displayed questions by clicking on one of the four options.
-2. **Review**: Visual feedback instantly tells you if you're right. 
+1. **Answer**: Click on one of the four options for the displayed question.
+2. **Learn**: Once answered, a **Detailed Explanation** box appears to help you understand the concept better.
 3. **Progress**: Click 'Next' to move to the next challenge.
-4. **Finish**: Check your final score on the result card and click 'Reset' to try again!
+4. **Finish**: Review your final performance on the score card and click 'Reset' to attempt the quiz again!
 
-## Author
-- Nishesh Chaudhary
+##  Author
+- **Nishesh Chaudhary**
 
